@@ -287,16 +287,7 @@ class Filter(commands.Cog):
         intent_news_triggered = any(intent in text for intent in intent_news)
         intent_cij_triggered = any(intent in text for intent in intent_cij)
         
-        if (intent_news_triggered or intent_cij_triggered) and subject_and_word_in_message and message.channel.id == guild_service.get_guild().channel_general:
-            view = discord.ui.View()
-            embed = discord.Embed(color=discord.Color.orange())
-            embed.description = f"Please keep support or jailbreak related messages in the appropriate channels. Thanks!"
-            embed.set_footer(
-                text="This action was performed automatically. Please disregard if incorrect.")
-            view.add_item(discord.ui.Button(label='iOS Jailbreak Thread', emoji="<:Channel2:947546361715388417>",
-                                            url=f"https://discord.com/channels/779760211522224138/972277304376053791", style=discord.ButtonStyle.url))
-            res = await message.reply(embed=embed, view=view, delete_after=20)
-        elif intent_news_triggered and subject_and_word_in_message:
+        if intent_news_triggered and subject_and_word_in_message:
             embed = discord.Embed(color=discord.Color.orange())
             embed.description = f"It appears you are asking about future jailbreaks. Nobody knows when a jailbreak will be released, but you can subscribe to notifications about releases by going to <#{db_guild.channel_reaction_roles}>."
             embed.set_footer(

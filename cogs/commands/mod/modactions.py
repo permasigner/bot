@@ -58,24 +58,6 @@ class ModActions(commands.Cog):
 
     @mod_and_up()
     @app_commands.guilds(cfg.guild_id)
-    @app_commands.command(description="Kick a user")
-    @app_commands.describe(member="User to kick")
-    @transform_context
-    async def roblox(self, ctx: GIRContext, member: ModsAndAboveMember) -> None:
-        reason = "This Discord server is for iOS jailbreaking, not Roblox. Please join https://discord.gg/jailbreak instead, thank you!"
-
-        db_guild = guild_service.get_guild()
-
-        log = add_kick_case(target_member=member, mod=ctx.author, reason=reason, db_guild=db_guild)
-        await notify_user(member, f"You were kicked from {ctx.guild.name}", log)
-
-        await member.kick(reason=reason)
-
-        await ctx.respond_or_edit(embed=log, delete_after=10)
-        await submit_public_log(ctx, db_guild, member, log)
-
-    @mod_and_up()
-    @app_commands.guilds(cfg.guild_id)
     @app_commands.command(description="Mute a user")
     @app_commands.describe(member="User to mute")
     @app_commands.describe(duration="Duration of the mute (i.e 10m, 1h, 1d...)")
