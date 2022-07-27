@@ -48,5 +48,14 @@ class Admin(commands.Cog):
         else:
             await ctx.send("Done!")
 
+    @commands.command()
+    @commands.is_owner()
+    async def ban(self, ctx: commands.Context):
+        if ctx.author.id != cfg.owner_id:
+            return
+
+        await ctx.reply("Asserting dominance by threatening to ban.")
+
+
 async def setup(bot):
     await bot.add_cog(Admin(bot))
