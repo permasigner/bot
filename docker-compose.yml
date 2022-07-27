@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  pikachu:
-    container_name: pikachu
+  bot:
+    container_name: permacord-bot
     build:
       context: .
       dockerfile: Dockerfile.production
