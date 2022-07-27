@@ -1,6 +1,7 @@
 import traceback
 import discord
-from discord import app_commands
+import requests
+from discord import app_commands, Color
 from discord.ext import commands
 from data.services import guild_service
 from utils import GIRContext, cfg, transform_context, logger
@@ -55,6 +56,33 @@ class Admin(commands.Cog):
             return
 
         await ctx.reply("Asserting dominance by threatening to ban.")
+        
+    @app_commands.guilds(cfg.guild_id)  
+    @app_commands.command(description="Push the latest commit of the Permasigner repo to Docker hub")
+    @transform_context
+    async def pushdocker(self, ctx):
+        headers = {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': f'token {cfg.github_workflow_token}',
+            'Content-Type': 'application/x-www-form-urlencoded',
+        }
+        
+        response = requests.post(
+            'https://api.github.com/repos/itsnebulalol/permasigner/actions/workflows/docker.yml/dispatches', 
+            headers=headers, 
+            data='{"ref":"main"}')
+        
+        if response.text:
+            desc = f"Made the request, but something might have gone wrong...\n\nWorkflow response:\n{response.text}"
+            color=Color.red()
+        else:
+            desc = f"The request succeeded! The Docker container is now being built and pushed."
+            color=Color.green()
+        
+        embed = discord.Embed(title="Push to Docker Hub", 
+                              description=desc, color=color)
+        
+        await ctx.respond(embed=embed)
 
 
 async def setup(bot):
