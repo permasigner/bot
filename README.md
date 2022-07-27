@@ -1,6 +1,6 @@
-# Pikachu Bot
+# Permacord Bot
 
-Pikachu is a bot based on [GIR Rewrite](https://github.com/DiscordGIR/GIRRewrite) for [Nebula's Palace](https://itsnebula.net/discord). It features:
+Permacord is a bot based on [GIR Rewrite](https://github.com/DiscordGIR/GIRRewrite) for [Permacord](https://dsc.gg/permasigner). It features:
 
 - Completely based on Discord's Slash Commands, written in the [Discord.py library](https://github.com/Rapptz/discord.py)
 - Standard moderation commands such as warn, mute, kick, ban, ...
@@ -11,7 +11,7 @@ Pikachu is a bot based on [GIR Rewrite](https://github.com/DiscordGIR/GIRRewrite
 - Miscellaneous utilities like `/canijailbreak`
 - And much more!
 
-Pikachu/GIR is custom made for a singular server and therefore there is no publicly running bot you can invite to your own server. However, you can self-host it as is or fork the code and modify it to your own requirements!
+Permacord/GIR is custom made for a singular server and therefore there is no publicly running bot you can invite to your own server. However, you can self-host it as is or fork the code and modify it to your own requirements!
 
 > See also: [GIR Rewrite](https://github.com/DiscordGIR/GIRRewrite), [Bloo](https://github.com/DiscordGIR/Bloo), and [GIR](https://github.com/DiscordGIR/GIR)
 
